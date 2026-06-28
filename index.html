@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>조셉 리스터 — 근대 외과수술의 아버지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{
+  --color-bg:#f0f5f5;--color-surface:#f5f9f9;--color-surface-2:#ffffff;
+  --color-surface-offset:#e4efee;--color-surface-offset-2:#d8ebe9;
+  --color-surface-dynamic:#c8dedd;--color-divider:#c5d9d8;--color-border:#b8cece;
+  --color-text:#0f2625;--color-text-muted:#4a6b6a;--color-text-faint:#8aabaa;
+  --color-text-inverse:#f5f9f9;
+  --color-primary:#0a7c75;--color-primary-hover:#075f5a;--color-primary-active:#044340;
+  --color-primary-highlight:#c8dedd;--color-primary-soft:rgba(10,124,117,0.08);
+  --color-creation:#2d7d3a;--color-creation-bg:#e8f5ea;
+  --color-fall:#8b4513;--color-fall-bg:#fdf0e6;
+  --color-redemption:#1a5276;--color-redemption-bg:#e8f4fd;
+  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;
+  --radius-2xl:1.5rem;--radius-full:9999px;
+  --shadow-sm:0 1px 3px rgba(10,60,58,0.08);--shadow-md:0 4px 16px rgba(10,60,58,0.10);
+  --shadow-lg:0 12px 40px rgba(10,60,58,0.14);
+  --font-display:'Gowun Dodum',serif;--font-body:'IBM Plex Sans KR',sans-serif;
+  --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+  --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+  --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --text-3xl:clamp(2.5rem,1rem + 4vw,5rem);
+  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
+  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+  --space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
+  --nav-height:64px;--transition:220ms cubic-bezier(0.16,1,0.3,1);
+}
+[data-theme="dark"]{
+  --color-bg:#0c1a19;--color-surface:#111f1e;--color-surface-2:#162524;
+  --color-surface-offset:#1a2d2c;--color-surface-offset-2:#1f3534;
+  --color-surface-dynamic:#264342;--color-divider:#1e3130;--color-border:#2a3e3d;
+  --color-text:#d4e8e7;--color-text-muted:#6b9896;--color-text-faint:#3d5f5d;
+  --color-text-inverse:#0c1a19;
+  --color-primary:#3db8b0;--color-primary-hover:#29a09a;--color-primary-active:#1a8880;
+  --color-primary-highlight:#1c3a38;--color-primary-soft:rgba(61,184,176,0.10);
+  --color-creation:#4caf58;--color-creation-bg:#0f2612;
+  --color-fall:#e07b4a;--color-fall-bg:#2a1508;
+  --color-redemption:#5b9bd5;--color-redemption-bg:#0a1b2a;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.25);--shadow-md:0 4px 16px rgba(0,0,0,0.35);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.50);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-height) + 16px);-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);min-height:100dvh;line-height:1.65}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.25;text-wrap:balance}
+p,li{text-wrap:pretty}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+::selection{background:rgba(10,124,117,0.2)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);background:rgba(240,245,245,0.82);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--color-divider);display:flex;align-items:center;transition:background var(--transition)}
+[data-theme="dark"] .navbar{background:rgba(12,26,25,0.88)}
+.navbar-inner{max-width:1100px;width:100%;margin:0 auto;padding:0 var(--space-6);display:flex;align-items:center;gap:var(--space-6)}
+.nav-logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;color:var(--color-text);font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;white-space:nowrap;flex-shrink:0}
+.nav-logo svg{color:var(--color-primary)}
+.nav-links{display:flex;align-items:center;gap:var(--space-1);list-style:none;flex:1}
+.nav-links a{display:block;padding:var(--space-2) var(--space-4);text-decoration:none;color:var(--color-text-muted);font-size:var(--text-sm);font-weight:500;border-radius:var(--radius-full);transition:color var(--transition),background var(--transition)}
+.nav-links a:hover{color:var(--color-text);background:var(--color-primary-soft)}
+.nav-links a.active{color:var(--color-primary);background:var(--color-primary-soft)}
+.nav-actions{display:flex;align-items:center;gap:var(--space-2);margin-left:auto}
+.theme-toggle{width:40px;height:40px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);transition:color var(--transition),background var(--transition)}
+.theme-toggle:hover{color:var(--color-text);background:var(--color-primary-soft)}
+
+/* HERO */
+.hero{padding-top:calc(var(--nav-height) + var(--space-16));padding-bottom:var(--space-20);padding-inline:var(--space-6);max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:var(--space-12);align-items:center}
+.hero-image-wrapper{position:relative;display:flex;justify-content:center}
+.hero-img-blob{width:min(320px,100%);aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:60% 40% 55% 45%/45% 55% 45% 55%;box-shadow:var(--shadow-lg);filter:sepia(0.15) contrast(1.05);transition:border-radius 0.8s ease}
+.hero-img-blob:hover{border-radius:45% 55% 40% 60%/55% 45% 55% 45%}
+.hero-badge{position:absolute;bottom:var(--space-4);left:50%;transform:translateX(-50%);background:var(--color-primary);color:white;padding:var(--space-2) var(--space-5);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;box-shadow:var(--shadow-md)}
+.hero-tag{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary-soft);color:var(--color-primary);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:var(--space-5)}
+.hero-title{font-size:var(--text-3xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3);letter-spacing:-0.02em}
+.hero-title span{color:var(--color-primary);font-style:italic}
+.hero-subtitle{font-size:var(--text-lg);color:var(--color-text-muted);margin-bottom:var(--space-6);font-weight:400}
+.hero-desc{color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-8);max-width:52ch;font-size:var(--text-base)}
+.hero-stats{display:flex;gap:var(--space-6)}
+.hero-stat{text-align:center}
+.hero-stat-num{display:block;font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-primary);line-height:1}
+.hero-stat-label{display:block;font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1);text-transform:uppercase;letter-spacing:0.06em}
+.hero-divider{width:1px;background:var(--color-divider);align-self:stretch}
+.hero-quote{margin-top:var(--space-8);padding:var(--space-5) var(--space-6);background:var(--color-surface);border-radius:var(--radius-xl);border-left:3px solid var(--color-primary);box-shadow:var(--shadow-sm)}
+.hero-quote p{font-family:var(--font-display);font-style:italic;color:var(--color-text);font-size:var(--text-base);line-height:1.7}
+.hero-quote cite{display:block;margin-top:var(--space-2);font-size:var(--text-xs);color:var(--color-text-muted);font-style:normal}
+
+/* SECTIONS */
+.section{padding:var(--space-20) var(--space-6)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{margin-bottom:var(--space-12)}
+.section-tag{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary-soft);color:var(--color-primary);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:var(--space-4)}
+.section-title{font-size:var(--text-2xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.section-desc{color:var(--color-text-muted);font-size:var(--text-lg);max-width:60ch}
+
+/* TIMELINE */
+#salvation{background:var(--color-surface)}
+.timeline-scroll-hint{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-faint);font-size:var(--text-xs);margin-bottom:var(--space-6)}
+.timeline-scroll-hint svg{animation:bounce-x 1.5s ease-in-out infinite}
+@keyframes bounce-x{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+.timeline-track-wrap{position:relative;overflow-x:auto;overflow-y:visible;padding-bottom:var(--space-6);scrollbar-width:thin;scrollbar-color:var(--color-divider) transparent}
+.timeline-track-wrap::-webkit-scrollbar{height:4px}
+.timeline-track-wrap::-webkit-scrollbar-thumb{background:var(--color-divider);border-radius:4px}
+.timeline-track{display:flex;gap:var(--space-5);padding:var(--space-4) var(--space-2);width:max-content;min-width:100%;position:relative}
+.timeline-track::before{content:'';position:absolute;top:calc(50% - 60px);left:5%;right:5%;height:2px;background:linear-gradient(90deg,var(--color-creation),var(--color-fall),var(--color-redemption));opacity:0.3;z-index:0}
+.timeline-item{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:var(--space-4);width:260px;flex-shrink:0}
+.timeline-era-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-2)}
+.era-creation .timeline-era-label{background:var(--color-creation-bg);color:var(--color-creation)}
+.era-fall .timeline-era-label{background:var(--color-fall-bg);color:var(--color-fall)}
+.era-redemption .timeline-era-label{background:var(--color-redemption-bg);color:var(--color-redemption)}
+.blob-btn{position:relative;width:230px;height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-6);border:none;cursor:pointer;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.4s ease;perspective:600px}
+.blob-btn.era-creation{background:var(--color-creation-bg)}
+.blob-btn.era-fall{background:var(--color-fall-bg)}
+.blob-btn.era-redemption{background:var(--color-redemption-bg)}
+.timeline-item:nth-child(1) .blob-btn{border-radius:62% 38% 50% 50%/45% 55% 45% 55%}
+.timeline-item:nth-child(2) .blob-btn{border-radius:45% 55% 62% 38%/55% 42% 58% 45%}
+.timeline-item:nth-child(3) .blob-btn{border-radius:55% 45% 38% 62%/48% 60% 40% 52%}
+.timeline-item:nth-child(4) .blob-btn{border-radius:40% 60% 55% 45%/58% 45% 55% 42%}
+.timeline-item:nth-child(5) .blob-btn{border-radius:58% 42% 45% 55%/42% 55% 45% 58%}
+.timeline-item:nth-child(6) .blob-btn{border-radius:48% 52% 60% 40%/54% 44% 56% 46%}
+.timeline-item:nth-child(7) .blob-btn{border-radius:52% 48% 44% 56%/46% 58% 42% 54%}
+.blob-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.55s cubic-bezier(0.16,1,0.3,1)}
+.blob-btn:hover .blob-inner{transform:rotateY(180deg)}
+.blob-front,.blob-back{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--space-4);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.blob-back{transform:rotateY(180deg)}
+.blob-front-title{font-family:var(--font-display);font-size:var(--text-base);font-weight:600;color:var(--color-text);line-height:1.2;margin-bottom:var(--space-2)}
+.blob-front-year{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);letter-spacing:0.05em}
+.blob-back-text{font-size:0.78rem;color:var(--color-text);line-height:1.55;font-weight:500}
+.era-creation .blob-front-title{color:var(--color-creation)}
+.era-fall .blob-front-title{color:var(--color-fall)}
+.era-redemption .blob-front-title{color:var(--color-redemption)}
+.blob-btn:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.blob-btn:active{transform:translateY(-2px)}
+.detail-panel{margin-top:var(--space-8);background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-2xl);padding:var(--space-8) var(--space-10);box-shadow:var(--shadow-md);display:none}
+.detail-panel.active{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--space-10);align-items:start;animation:panel-in 0.4s cubic-bezier(0.16,1,0.3,1) both}
+@keyframes panel-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.detail-era-badge{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-4)}
+.era-creation .detail-era-badge{background:var(--color-creation-bg);color:var(--color-creation)}
+.era-fall .detail-era-badge{background:var(--color-fall-bg);color:var(--color-fall)}
+.era-redemption .detail-era-badge{background:var(--color-redemption-bg);color:var(--color-redemption)}
+.detail-main-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);line-height:1.25}
+.detail-body{color:var(--color-text-muted);line-height:1.8;font-size:var(--text-base)}
+.detail-body p+p{margin-top:var(--space-4)}
+.detail-turning-point{background:var(--color-surface-offset);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-6);border-left:3px solid var(--color-primary)}
+.detail-turning-point h4{font-family:var(--font-display);font-size:var(--text-base);font-weight:600;color:var(--color-text);margin-bottom:var(--space-3)}
+.detail-turning-point p{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.7}
+.detail-scripture{margin-top:var(--space-5);background:var(--color-primary-soft);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5)}
+.detail-scripture .verse-ref{font-size:var(--text-xs);font-weight:700;color:var(--color-primary);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:var(--space-2)}
+.detail-scripture p{font-family:var(--font-display);font-style:italic;font-size:var(--text-sm);color:var(--color-text);line-height:1.7}
+.detail-close{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-6);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);border:1px solid var(--color-border);transition:all var(--transition)}
+.detail-close:hover{background:var(--color-surface-offset);color:var(--color-text)}
+.timeline-scripture-row{margin-top:var(--space-8);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.scripture-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-6);box-shadow:var(--shadow-sm)}
+.scripture-card-era{font-size:var(--text-xs);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-2)}
+.era-creation .scripture-card-era{color:var(--color-creation)}
+.era-fall .scripture-card-era{color:var(--color-fall)}
+.era-redemption .scripture-card-era{color:var(--color-redemption)}
+.scripture-card-ref{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-2)}
+.scripture-card-text{font-style:italic;color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.65}
+
+/* FAITH */
+#faith{background:var(--color-bg);min-height:80vh}
+.faith-arena{position:relative;min-height:520px;border-radius:var(--radius-2xl);background:var(--color-surface);border:1px solid var(--color-border);overflow:hidden}
+.faith-blob-field{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity 0.4s ease}
+.faith-blob-field.hidden{opacity:0;pointer-events:none}
+.faith-blob{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-3) var(--space-4);cursor:pointer;font-size:var(--text-xs);font-weight:600;line-height:1.3;color:var(--color-text);border:1.5px solid var(--color-border);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s ease,opacity 0.3s ease;user-select:none}
+.faith-blob:hover{transform:scale(1.12) translateY(-4px)!important;box-shadow:var(--shadow-lg);z-index:10}
+.faith-blob:nth-child(1){width:140px;height:120px;border-radius:62%38%55%45%/50%60%40%50%;background:#e8f5ea}
+.faith-blob:nth-child(2){width:130px;height:140px;border-radius:45%55%38%62%/60%40%55%45%;background:#fdf0e6}
+.faith-blob:nth-child(3){width:150px;height:130px;border-radius:55%45%62%38%/45%58%42%55%;background:#e8f4fd}
+.faith-blob:nth-child(4){width:125px;height:145px;border-radius:38%62%50%50%/55%42%58%45%;background:#f0e8f5}
+.faith-blob:nth-child(5){width:145px;height:125px;border-radius:60%40%45%55%/42%58%52%48%;background:#fce8e8}
+.faith-blob:nth-child(6){width:135px;height:135px;border-radius:48%52%60%40%/52%48%44%56%;background:#e8f5f0}
+.faith-blob:nth-child(7){width:155px;height:120px;border-radius:52%48%44%56%/46%54%60%40%;background:#fdf5e8}
+[data-theme="dark"] .faith-blob:nth-child(1){background:#0f2612}
+[data-theme="dark"] .faith-blob:nth-child(2){background:#2a1508}
+[data-theme="dark"] .faith-blob:nth-child(3){background:#0a1b2a}
+[data-theme="dark"] .faith-blob:nth-child(4){background:#1a0f2a}
+[data-theme="dark"] .faith-blob:nth-child(5){background:#2a0f0f}
+[data-theme="dark"] .faith-blob:nth-child(6){background:#0f2a1f}
+[data-theme="dark"] .faith-blob:nth-child(7){background:#2a200a}
+.faith-detail{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.6fr;gap:0;opacity:0;pointer-events:none;transition:opacity 0.35s ease}
+.faith-detail.active{opacity:1;pointer-events:all}
+.faith-detail-left{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--space-8);border-right:1px solid var(--color-border)}
+.faith-active-blob{width:180px;height:180px;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-5);font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);line-height:1.25;animation:blob-morph 6s ease-in-out infinite}
+@keyframes blob-morph{0%,100%{border-radius:60%40%55%45%/50%60%40%50%}33%{border-radius:45%55%38%62%/60%40%55%45%}66%{border-radius:55%45%62%38%/45%58%42%55%}}
+.faith-detail-right{padding:var(--space-8) var(--space-10);overflow-y:auto;display:flex;flex-direction:column;justify-content:center}
+.faith-detail-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-5)}
+.faith-detail-body{color:var(--color-text-muted);line-height:1.8;font-size:var(--text-base)}
+.faith-detail-body p+p{margin-top:var(--space-3)}
+.faith-scripture{margin-top:var(--space-5);padding:var(--space-4) var(--space-5);background:var(--color-primary-soft);border-radius:var(--radius-lg)}
+.faith-scripture .ref{font-size:var(--text-xs);font-weight:700;color:var(--color-primary);margin-bottom:var(--space-2)}
+.faith-scripture p{font-family:var(--font-display);font-style:italic;font-size:var(--text-sm);color:var(--color-text)}
+.faith-back-btn{display:inline-flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-6);padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);border:1px solid var(--color-border);transition:all var(--transition);width:fit-content}
+.faith-back-btn:hover{background:var(--color-surface-offset);color:var(--color-text)}
+@keyframes float-1{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(8px,-10px) rotate(2deg)}66%{transform:translate(-6px,6px) rotate(-1.5deg)}}
+@keyframes float-2{0%,100%{transform:translate(0,0) rotate(0deg)}40%{transform:translate(-10px,8px) rotate(-2deg)}70%{transform:translate(7px,-5px) rotate(1.5deg)}}
+@keyframes float-3{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(6px,10px) rotate(1.5deg)}60%{transform:translate(-8px,-7px) rotate(-2deg)}}
+@keyframes float-4{0%,100%{transform:translate(0,0) rotate(0deg)}45%{transform:translate(9px,-8px) rotate(-1.5deg)}75%{transform:translate(-5px,9px) rotate(2deg)}}
+@keyframes float-5{0%,100%{transform:translate(0,0) rotate(0deg)}30%{transform:translate(-7px,-9px) rotate(2.5deg)}65%{transform:translate(8px,5px) rotate(-1deg)}}
+@keyframes float-6{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(5px,11px) rotate(-2deg)}80%{transform:translate(-9px,-6px) rotate(1.5deg)}}
+@keyframes float-7{0%,100%{transform:translate(0,0) rotate(0deg)}35%{transform:translate(-6px,7px) rotate(1deg)}70%{transform:translate(10px,-8px) rotate(-2.5deg)}}
+
+/* CITATIONS */
+#citations{background:var(--color-surface)}
+.citations-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4)}
+.citation-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-6);box-shadow:var(--shadow-sm);display:flex;gap:var(--space-4);align-items:flex-start}
+.citation-num{flex-shrink:0;width:32px;height:32px;border-radius:var(--radius-full);background:var(--color-primary-soft);color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700}
+.citation-text{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65}
+.citation-text strong{color:var(--color-text)}
+.citation-text a{color:var(--color-primary);text-decoration:none;word-break:break-all;font-size:var(--text-xs)}
+.citation-text a:hover{text-decoration:underline}
+
+/* CREDITS */
+#credits{background:var(--color-bg)}
+.credits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);max-width:600px}
+.credit-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-2xl);padding:var(--space-8) var(--space-6);text-align:center;box-shadow:var(--shadow-sm);transition:transform var(--transition),box-shadow var(--transition)}
+.credit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.credit-avatar{width:64px;height:64px;border-radius:var(--radius-full);background:linear-gradient(135deg,var(--color-primary-soft),var(--color-primary-highlight));margin:0 auto var(--space-4);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-primary)}
+.credit-name{font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--color-text);margin-bottom:var(--space-2)}
+.credit-role{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.08em;color:var(--color-primary);font-weight:600}
+footer{text-align:center;padding:var(--space-12) var(--space-6);background:var(--color-text);color:var(--color-text-inverse)}
+footer p{font-size:var(--text-sm);opacity:0.6}
+footer strong{opacity:1;font-family:var(--font-display)}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:calc(var(--nav-height) + var(--space-8))}
+  .hero-image-wrapper{order:-1}
+  .hero-img-blob{width:min(240px,100%)}
+  .hero-stats{justify-content:center}
+  .nav-links{display:none}
+  .detail-panel.active{grid-template-columns:1fr}
+  .faith-detail{grid-template-columns:1fr}
+  .faith-detail-left{border-right:none;border-bottom:1px solid var(--color-border)}
+  .timeline-scripture-row{grid-template-columns:1fr}
+  .credits-grid{gap:var(--space-3)}
+  .credit-card{padding:var(--space-5) var(--space-3)}
+  .credit-avatar{width:48px;height:48px;font-size:var(--text-lg)}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#hero" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+      조셉 리스터
+    </a>
+    <ul class="nav-links">
+      <li><a href="#overview">프로젝트 개요</a></li>
+      <li><a href="#salvation">구속사 / 인생</a></li>
+      <li><a href="#faith">믿음</a></li>
+      <li><a href="#citations">Citations</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="테마 변경">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section id="hero" class="hero">
+  <div class="hero-image-wrapper">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Joseph_Lister%2C_1st_Baron_Lister_%281827_%E2%80%93_1912%29_surgeon_Wellcome_L0002075.jpg"
+      alt="조셉 리스터의 초상 사진" class="hero-img-blob" width="320" height="427" loading="eager">
+    <span class="hero-badge">1827 – 1912</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg>
+      11th Grade Final Project
+    </div>
+    <h1 class="hero-title">조셉 리스터,<br><span>근대 외과수술의 아버지</span></h1>
+    <p class="hero-subtitle">Father of Modern Surgery</p>
+    <p class="hero-desc">이 프로젝트는 조셉 리스터의 삶을 <strong>구속사(Salvation History)</strong>와 <strong>예수 그리스도의 성품</strong>이라는 두 렌즈로 분석하여, 한 크리스천 과학자가 어떻게 하나님의 도구로 수백만 명의 생명을 구하였는지를 탐구합니다.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">45%→15%</span><span class="hero-stat-label">수술 사망률 감소</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">1867</span><span class="hero-stat-label">Lancet 논문 발표</span></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">10+</span><span class="hero-stat-label">연계 성경 구절</span></div>
+    </div>
+    <blockquote class="hero-quote">
+      <p>"I am a believer in the fundamental doctrines of Christianity."</p>
+      <cite>— Joseph Lister (Christianity.com)</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section id="overview" class="section" style="background:var(--color-surface)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">프로젝트 개요</div>
+      <h2 class="section-title">이 프로젝트에 대하여</h2>
+      <p class="section-desc">조셉 리스터의 삶, 신앙, 행동이 예수 그리스도의 성품과 가르침을 어떻게 반영하는지 탐구합니다.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-5)">
+      <div style="background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-2xl);padding:var(--space-6);box-shadow:var(--shadow-sm)">
+        <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:var(--space-2);color:var(--color-text)">구속사 속 리스터</h3>
+        <p style="color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.7">Creation → Fall → Redemption의 흐름 속에서 리스터의 삶이 어떻게 위치하는지 타임라인으로 탐구합니다.</p>
+      </div>
+      <div style="background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-2xl);padding:var(--space-6);box-shadow:var(--shadow-sm)">
+        <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:var(--space-2);color:var(--color-text)">예수님의 성품 반영</h3>
+        <p style="color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.7">겸손, 섬김, 긍휼, 인내라는 예수님의 성품이 리스터의 행동과 선택에서 어떻게 드러나는지 7가지로 분석합니다.</p>
+      </div>
+      <div style="background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-2xl);padding:var(--space-6);box-shadow:var(--shadow-sm)">
+        <h3 style="font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:var(--space-2);color:var(--color-text)">성경 구절 연계</h3>
+        <p style="color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.7">리스터의 삶의 각 단계와 성품에 연결되는 10개의 성경 구절을 정확하게 분석하고 연결합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="salvation" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">구속사 / 인생</div>
+      <h2 class="section-title">구원의 역사 속 조셉 리스터</h2>
+      <p class="section-desc">Creation → Fall → Redemption으로 이어지는 구속사의 흐름 속에서 리스터의 삶을 탐구하세요. 각 카드에 마우스를 올리면 터닝 포인트 요약이, 클릭하면 상세 내용이 나옵니다.</p>
+    </div>
+    <div class="timeline-scroll-hint">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      좌우로 스크롤할 수 있어요
+    </div>
+    <div class="timeline-track-wrap">
+      <div class="timeline-track">
+        <div class="timeline-item era-creation">
+          <span class="timeline-era-label">Creation</span>
+          <button class="blob-btn era-creation" data-item="creation-1">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">하나님의 형상대로 지음 받음</span><span class="blob-front-year">1827년 탄생</span></div>
+              <div class="blob-back"><p class="blob-back-text">퀘이커 가정에서 태어나 아버지의 현미경 연구를 통해 창조 세계의 질서를 배우며 성장. 16세에 외과의사의 꿈을 품음.</p></div>
+            </div>
+          </button>
+        </div>
+        <div class="timeline-item era-creation">
+          <span class="timeline-era-label">Creation</span>
+          <button class="blob-btn era-creation" data-item="creation-2">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">의학의 길로 부르심</span><span class="blob-front-year">1844–1852</span></div>
+              <div class="blob-back"><p class="blob-back-text">런던대학교 입학. 마취제를 사용한 역사적 최초 수술을 직접 목격하고 외과학에 헌신. 1852년 의학 학사 취득.</p></div>
+            </div>
+          </button>
+        </div>
+        <div class="timeline-item era-fall">
+          <span class="timeline-era-label">Fall</span>
+          <button class="blob-btn era-fall" data-item="fall-1">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">죽음과의 마주침</span><span class="blob-front-year">1856–1860</span></div>
+              <div class="blob-back"><p class="blob-back-text">수술 후 환자의 45~50%가 패혈증으로 사망. 리스터는 이 타락한 세상의 고통을 직접 목격하고 원인 탐구를 시작.</p></div>
+            </div>
+          </button>
+        </div>
+        <div class="timeline-item era-fall">
+          <span class="timeline-era-label">Fall</span>
+          <button class="blob-btn era-fall" data-item="fall-2">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">동료들의 조롱과 거부</span><span class="blob-front-year">1867–1880</span></div>
+              <div class="blob-back"><p class="blob-back-text">Lancet 발표 후 런던 의사들이 조롱. "리스터의 세균이 못 들어오게 문을 닫아라"는 비꼼. 그러나 리스터는 포기하지 않음.</p></div>
+            </div>
+          </button>
+        </div>
+        <div class="timeline-item era-redemption">
+          <span class="timeline-era-label">Redemption</span>
+          <button class="blob-btn era-redemption" data-item="redemption-1">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">파스퇴르의 세균론과 만남</span><span class="blob-front-year">1864년</span></div>
+              <div class="blob-back"><p class="blob-back-text">화학 교수 Thomas Anderson이 소개한 파스퇴르 논문을 읽고 세균론을 수술에 적용할 수 있음을 깨달음.</p></div>
+            </div>
+          </button>
+        </div>
+        <div class="timeline-item era-redemption">
+          <span class="timeline-era-label">Redemption</span>
+          <button class="blob-btn era-redemption" data-item="redemption-2">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">최초 무균 수술 성공</span><span class="blob-front-year">1865년 8월 12일</span></div>
+              <div class="blob-back"><p class="blob-back-text">11세 소년의 복합 골절에 카볼산 소독 최초 적용. 4일 후 감염 없이 뼈가 붙기 시작. 사망률 45% → 15%.</p></div>
+            </div>
+          </button>
+        </div>
+        <div class="timeline-item era-redemption">
+          <span class="timeline-era-label">Redemption</span>
+          <button class="blob-btn era-redemption" data-item="redemption-3">
+            <div class="blob-inner">
+              <div class="blob-front"><span class="blob-front-title">전 세계가 인정하다</span><span class="blob-front-year">1890–1912</span></div>
+              <div class="blob-back"><p class="blob-back-text">1890년 전 세계 의료계 채택. 1897년 Baron 작위. 아내 Agnes 사별 후 신앙에 귀의하며 평화롭게 삶을 마침.</p></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="detail-panel" id="detail-panel"><div id="detail-left"></div><div id="detail-right"></div></div>
+    <div class="timeline-scripture-row">
+      <div class="scripture-card era-creation"><div class="scripture-card-era">Creation</div><div class="scripture-card-ref">창세기 1:27</div><p class="scripture-card-text">하나님이 자기 형상 곧 하나님의 형상대로 사람을 창조하시되 남자와 여자를 창조하시고</p></div>
+      <div class="scripture-card era-fall"><div class="scripture-card-era">Fall</div><div class="scripture-card-ref">로마서 5:12</div><p class="scripture-card-text">한 사람으로 말미암아 죄가 세상에 들어오고 죄로 말미암아 사망이 들어왔나니 이와 같이 모든 사람이 죄를 지었으므로 사망이 모든 사람에게 이르렀느니라</p></div>
+      <div class="scripture-card era-redemption"><div class="scripture-card-era">Redemption</div><div class="scripture-card-ref">로마서 5:8</div><p class="scripture-card-text">우리가 아직 죄인 되었을 때에 그리스도께서 우리를 위하여 죽으심으로 하나님께서 우리에 대한 자기의 사랑을 확증하셨느니라</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faith" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">믿음</div>
+      <h2 class="section-title">리스터의 믿음 — 예수님의 성품</h2>
+      <p class="section-desc">아래 미생물처럼 떠다니는 blob을 클릭하여 리스터의 신앙과 예수님의 성품 연결을 탐구하세요.</p>
+    </div>
+    <div class="faith-arena" id="faith-arena">
+      <div class="faith-blob-field" id="blob-field">
+        <div class="faith-blob" data-faith="1" style="top:12%;left:8%;animation:float-1 7s ease-in-out infinite">생명을 귀하게 여김</div>
+        <div class="faith-blob" data-faith="2" style="top:10%;left:36%;animation:float-2 8s ease-in-out infinite 0.5s">이웃 사랑의 실천</div>
+        <div class="faith-blob" data-faith="3" style="top:8%;left:62%;animation:float-3 9s ease-in-out infinite 1s">섬기러 오셨다</div>
+        <div class="faith-blob" data-faith="4" style="top:50%;left:5%;animation:float-4 7.5s ease-in-out infinite 0.3s">행함 있는 믿음</div>
+        <div class="faith-blob" data-faith="5" style="top:52%;left:35%;animation:float-5 8.5s ease-in-out infinite 0.8s">포기하지 않는 인내</div>
+        <div class="faith-blob" data-faith="6" style="top:48%;left:65%;animation:float-6 7.8s ease-in-out infinite 1.2s">하나님의 인도를 믿음</div>
+        <div class="faith-blob" data-faith="7" style="top:72%;left:25%;animation:float-7 9.2s ease-in-out infinite 0.6s">겸손한 성품</div>
+      </div>
+      <div class="faith-detail" id="faith-detail">
+        <div class="faith-detail-left"><div class="faith-active-blob" id="faith-active-blob"></div></div>
+        <div class="faith-detail-right" id="faith-detail-content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="citations" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Citations</div>
+      <h2 class="section-title">참고 자료 출처</h2>
+      <p class="section-desc">이 프로젝트에서 사용된 모든 신뢰할 수 있는 외부 자료입니다.</p>
+    </div>
+    <div class="citations-grid">
+      <div class="citation-card"><div class="citation-num">1</div><div class="citation-text"><strong>Michaleas et al. (2022)</strong> "Joseph Lister (1827–1912): A Pioneer of Antiseptic Surgery." <em>Cureus / PubMed Central</em>.<br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9854334/" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov</a></div></div>
+      <div class="citation-card"><div class="citation-num">2</div><div class="citation-text"><strong>Dunea, George. (2014)</strong> "Joseph Lister and the Story of Antiseptic Surgery." <em>Hektoen International</em>.<br><a href="https://hekint.org/2017/01/22/joseph-lister-and-the-story-of-antiseptic-surgery/" target="_blank" rel="noopener">hekint.org</a></div></div>
+      <div class="citation-card"><div class="citation-num">3</div><div class="citation-text"><strong>Science Museum UK.</strong> "Joseph Lister's Antisepsis System."<br><a href="https://www.sciencemuseum.org.uk/objects-and-stories/medicine/listers-antisepsis-system" target="_blank" rel="noopener">sciencemuseum.org.uk</a></div></div>
+      <div class="citation-card"><div class="citation-num">4</div><div class="citation-text"><strong>van Hartesveldt, Fred R. (2023)</strong> "Joseph Lister." <em>EBSCO Research Starters</em>.<br><a href="https://www.ebsco.com/research-starters/history/joseph-lister" target="_blank" rel="noopener">ebsco.com</a></div></div>
+      <div class="citation-card"><div class="citation-num">5</div><div class="citation-text"><strong>Christianity.com.</strong> "Joseph Lister." Church History Timeline.<br><a href="https://www.christianity.com/church/church-history/timeline/1901-2000/joseph-lister-11630698.html" target="_blank" rel="noopener">christianity.com</a></div></div>
+      <div class="citation-card"><div class="citation-num">6</div><div class="citation-text"><strong>IBLP.</strong> "Joseph Lister: Saving Lives with Practical Cleanliness."<br><a href="https://iblp.org/joseph-lister-saving-lives-with-practical-cleanliness/" target="_blank" rel="noopener">iblp.org</a></div></div>
+      <div class="citation-card"><div class="citation-num">7</div><div class="citation-text"><strong>Lister, Joseph. (1867)</strong> "On the Antiseptic Principle of the Practice of Surgery." <em>The Lancet</em>, Vol. 2.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="credits" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">크레딧</div>
+      <h2 class="section-title">프로젝트 팀</h2>
+    </div>
+    <div class="credits-grid">
+      <div class="credit-card"><div class="credit-avatar">강</div><div class="credit-name">김강현</div><div class="credit-role">코딩</div></div>
+      <div class="credit-card"><div class="credit-avatar">하</div><div class="credit-name">박하준</div><div class="credit-role">자료조사</div></div>
+      <div class="credit-card"><div class="credit-avatar">은</div><div class="credit-name">정하은</div><div class="credit-role">자료조사</div></div>
+    </div>
+    <p style="margin-top:var(--space-10);color:var(--color-text-muted);font-family:var(--font-display);font-style:italic;font-size:var(--text-lg)">"Throughout his life, he remained a gentle, shy, unassuming man, firm in his purpose because he humbly believed himself to be directed by God."</p>
+    <p style="color:var(--color-text-faint);font-size:var(--text-sm);margin-top:var(--space-2)">— World Book Encyclopedia, Joseph Lister</p>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Joseph Lister — 근대 외과수술의 아버지</strong></p>
+  <p style="margin-top:var(--space-2)">11th Grade Final Project · Salvation History · 2026</p>
+</footer>
+
+<script>
+(function(){
+  const btn=document.querySelector('[data-theme-toggle]'),html=document.documentElement;
+  let theme=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  html.setAttribute('data-theme',theme);
+  function upd(){btn.innerHTML=theme==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'}
+  upd();
+  btn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';html.setAttribute('data-theme',theme);upd()});
+})();
+(function(){
+  const secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.nav-links a');
+  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))})},{threshold:0.35}).observe&&secs.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))})},{threshold:0.35}).observe(s));
+})();
+
+const DD={
+  'creation-1':{era:'creation',left:`<div class="detail-era-badge era-creation">Creation</div><h3 class="detail-main-title">탄생과 어린 시절의 소명<br><small style="font-size:0.6em;color:var(--color-text-muted)">1827년 4월 5일</small></h3><div class="detail-body"><p>조셉 리스터는 1827년 4월 5일 영국 에섹스(Essex) 업톤(Upton)에서 독실한 퀘이커 가정의 아들로 태어났다. 아버지 Joseph Jackson Lister는 복합 현미경 렌즈를 개량한 아마추어 과학자로 왕립학회(Royal Society) 회원이었다.</p><p>창조의 관점에서 볼 때, 리스터는 하나님이 그에게 주신 과학적 지성과 온화한 성품을 통해 인간의 몸과 생명을 돌보는 청지기적 소명으로 나아갔다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 현미경과 외과의사의 꿈</h4><p>리스터는 아버지에게 현미경 사용법을 배우며 창조 세계를 섬세하게 관찰하는 태도를 길렀다. 16세가 되자 외과 의사가 되고 싶다는 꿈을 품었고, 이것은 단순한 직업 선택이 아니라 하나님께서 창조하신 생명을 보호하려는 소명이었다.</p></div><div class="detail-scripture"><div class="verse-ref">창세기 1:27</div><p>"하나님이 자기 형상 곧 하나님의 형상대로 사람을 창조하시되 남자와 여자를 창조하시고"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`},
+  'creation-2':{era:'creation',left:`<div class="detail-era-badge era-creation">Creation</div><h3 class="detail-main-title">런던대학교와 의학의 길<br><small style="font-size:0.6em;color:var(--color-text-muted)">1844–1852</small></h3><div class="detail-body"><p>리스터는 런던대학교(University College London)에 입학하여 의학을 공부하였다. 1847년, 에테르 마취제를 이용한 역사상 최초의 수술을 직접 관찰하였다.</p><p>1852년 의학 학사 학위를 취득하고, 왕립외과의사협회(FRCS) 회원이 되었다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 에테르 마취 수술 목격</h4><p>최초의 마취 수술을 목격한 리스터는 수술 후 감염이라는 더 큰 문제가 남아있음을 인식하였다. 이것이 그의 평생 연구 방향을 결정짓는 순간이었다.</p></div><div class="detail-scripture"><div class="verse-ref">요한복음 1:3</div><p>"만물이 그로 말미암아 지은 바 되었으니 지은 것이 하나도 그가 없이는 된 것이 없느니라"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`},
+  'fall-1':{era:'fall',left:`<div class="detail-era-badge era-fall">Fall</div><h3 class="detail-main-title">수술실의 죽음<br><small style="font-size:0.6em;color:var(--color-text-muted)">1856–1860, 글래스고</small></h3><div class="detail-body"><p>글래스고 왕립병원에서 외과의로 일하던 리스터는 충격적인 현실을 마주하였다. 수술 후 환자의 45~50%가 패혈증, 감염, 괴사로 사망하였다.</p><p>타락의 관점에서 볼 때, 리스터가 마주한 수술실은 죄로 인해 깨어진 세계, 곧 보이지 않는 세균(악)이 생명을 앗아가는 현장이었다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 감염의 원인을 찾겠다는 결심</h4><p>그는 죽어가는 환자들을 보며 예수님처럼 측은한 마음을 느꼈고, 이 문제를 반드시 해결하겠다고 결심하였다.</p></div><div class="detail-scripture"><div class="verse-ref">로마서 5:12</div><p>"한 사람으로 말미암아 죄가 세상에 들어오고 죄로 말미암아 사망이 들어왔나니"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`},
+  'fall-2':{era:'fall',left:`<div class="detail-era-badge era-fall">Fall</div><h3 class="detail-main-title">동료들의 거부<br><small style="font-size:0.6em;color:var(--color-text-muted)">1867–1880</small></h3><div class="detail-body"><p>1867년 The Lancet에 논문을 발표한 후, 런던의 많은 의사들이 리스터의 방법을 조롱하고 거부하였다. 그러나 리스터는 화를 내거나 낙담하지 않았다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 인내와 결실</h4><p>1890년, 마침내 전 세계 의료계가 리스터의 방법을 채택하였다. 독일 뮌헨 병원에서는 수술 사망률이 80%에서 0.5%로 감소하였다.</p></div><div class="detail-scripture"><div class="verse-ref">로마서 8:28</div><p>"하나님을 사랑하는 자 곧 그의 뜻대로 부르심을 입은 자들에게는 모든 것이 합력하여 선을 이루느니라"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`},
+  'redemption-1':{era:'redemption',left:`<div class="detail-era-badge era-redemption">Redemption</div><h3 class="detail-main-title">파스퇴르의 세균론<br><small style="font-size:0.6em;color:var(--color-text-muted)">1864년</small></h3><div class="detail-body"><p>1864년, 글래스고 대학교 화학 교수 Thomas Anderson이 리스터에게 루이 파스퇴르의 세균론 논문을 소개하였다. 리스터는 이 논문을 읽고 즉시 진실을 알아보았다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 성경과 과학의 연결</h4><p>리스터는 파스퇴르의 이론을 성경의 청결 규정(레위기 15:13, 민수기 19:11)과 연결하였다. 수천 년 전 하나님이 이미 세균 예방의 원리를 성경에 담아두셨음을 그는 깨달았다.</p></div><div class="detail-scripture"><div class="verse-ref">레위기 15:13</div><p>"그 유출이 깨끗하여지거든 자기를 위하여 칠 일을 센 후에 옷을 빨고 흐르는 물에 몸을 씻을 것이라"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`},
+  'redemption-2':{era:'redemption',left:`<div class="detail-era-badge era-redemption">Redemption</div><h3 class="detail-main-title">1865년 8월 12일<br><small style="font-size:0.6em;color:var(--color-text-muted)">역사를 바꾼 하루</small></h3><div class="detail-body"><p>1865년 8월 12일, 리스터는 11세 소년 James Greenlees의 복합 골절 치료에 역사상 최초로 카볼산(carbolic acid, 페놀) 소독법을 적용하였다. 수술 후 사망률은 45%에서 15%로 감소하였다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 죽음이 물러가다</h4><p>예수님께서 병든 자들을 치료하신 것처럼, 리스터의 발견은 타락한 세상 속에서 생명을 보호하는 도구가 되었다. 독일 뮌헨에서는 사망률이 80% → 0.5%로 감소하였다.</p></div><div class="detail-scripture"><div class="verse-ref">요한복음 10:10</div><p>"내가 온 것은 양으로 생명을 얻게 하고 더 풍성히 얻게 하려는 함이라"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`},
+  'redemption-3':{era:'redemption',left:`<div class="detail-era-badge era-redemption">Redemption</div><h3 class="detail-main-title">전 세계적 인정과 마지막<br><small style="font-size:0.6em;color:var(--color-text-muted)">1890–1912</small></h3><div class="detail-body"><p>1890년, 전 세계 의료계가 리스터의 무균 수술법을 채택하였다. 1897년 Baron Lister 귀족 작위. 1893년 아내 Agnes 사별 후 더욱 깊이 신앙에 귀의하며 1912년 2월 10일, 84세로 평화롭게 세상을 떠났다.</p></div>`,right:`<div class="detail-turning-point"><h4>전환점: 아내 Agnes의 죽음과 신앙 귀의</h4><p>World Book Encyclopedia: "평생 동안 겸손한 삶을 실천한 훌륭한 기독교인으로, 하나님의 인도를 받는다고 믿었다."</p></div><div class="detail-scripture"><div class="verse-ref">이사야 58:8</div><p>"그리하면 네 빛이 새벽같이 비칠 것이며 네 치유가 급속할 것이며"</p></div><button class="detail-close" onclick="closeDetail()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>닫기</button>`}
+};
+
+let activeItem=null;
+document.querySelectorAll('.blob-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const k=btn.dataset.item,panel=document.getElementById('detail-panel');
+    if(activeItem===k){closeDetail();return}
+    activeItem=k;const d=DD[k];if(!d)return;
+    document.getElementById('detail-left').innerHTML=d.left;
+    document.getElementById('detail-right').innerHTML=d.right;
+    panel.className='detail-panel active era-'+d.era;
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+});
+function closeDetail(){activeItem=null;document.getElementById('detail-panel').classList.remove('active')}
+window.closeDetail=closeDetail;
+
+const FD={
+  '1':{label:'생명을 귀하게 여김',bg:'#e8f5ea',dbg:'#0f2612',title:'생명을 귀하게 여김',body:`<p>예수님은 요한복음 10:10에서 "내가 온 것은 양으로 생명을 얻게 하고 더 풍성히 얻게 하려는 함이라"고 말씀하셨다. 리스터는 인간의 몸을 단순한 수술 대상이 아니라 하나님이 창조하신 존엄한 존재로 보았다.</p><p>그는 외과의사의 길을 선택하고, 수술 후 감염으로 죽어가는 환자들을 살리기 위해 연구하였다.</p>`,ref:'요한복음 10:10',verse:'"내가 온 것은 양으로 생명을 얻게 하고 더 풍성히 얻게 하려는 함이라"'},
+  '2':{label:'이웃 사랑의 실천',bg:'#fdf0e6',dbg:'#2a1508',title:'이웃 사랑의 실천',body:`<p>예수님은 "네 이웃을 네 자신과 같이 사랑하라"고 가르치셨다. 리스터의 연구는 자신의 명예를 위한 것이 아니었다. 그는 환자들의 생명을 살리고자 했다.</p><p>어느 날 한 소녀의 인형이 찢어진 것을 본 리스터는 직접 바느질하여 인형을 고쳐주었다.</p>`,ref:'마가복음 12:31',verse:'"네 이웃을 네 자신과 같이 사랑하라 하신 것이라 이보다 더 큰 계명이 없느니라"'},
+  '3':{label:'섬기러 오셨다',bg:'#e8f4fd',dbg:'#0a1b2a',title:'섬김의 성품',body:`<p>예수님은 "인자가 온 것은 섬김을 받으려 함이 아니라 도리어 섬기려 함이라"고 하셨다. 리스터는 영국 최고의 의사였지만, 자신의 지식과 기술을 자랑의 도구로 사용하지 않았다.</p><p>그는 자신의 발견을 다른 의사들도 사용할 수 있도록 아낌없이 나누었다.</p>`,ref:'마가복음 10:45',verse:'"인자가 온 것은 섬김을 받으려 함이 아니라 도리어 섬기려 하고 자기 목숨을 많은 사람의 대속물로 주려 함이니라"'},
+  '4':{label:'행함 있는 믿음',bg:'#f0e8f5',dbg:'#1a0f2a',title:'행함 있는 믿음',body:`<p>야고보서 2:17은 "행함이 없는 믿음은 그 자체가 죽은 것이라"고 말한다. 리스터의 신앙은 말로만 표현된 믿음이 아니었다.</p><p>그는 감염의 원인을 찾기 위해 연구하고, 실제 수술 현장에서 소독법을 적용하였다.</p>`,ref:'야고보서 2:17',verse:'"이와 같이 행함이 없는 믿음은 그 자체가 죽은 것이라"'},
+  '5':{label:'포기하지 않는 인내',bg:'#fce8e8',dbg:'#2a0f0f',title:'포기하지 않는 인내',body:`<p>갈라디아서 6:9은 "우리가 선을 행하되 낙심하지 말지니 포기하지 아니하면 때가 이르매 거두리라"고 가르친다.</p><p>당시 많은 의사들이 그의 방법을 의심하고 비웃었다. 그러나 리스터는 온화하고 겸손한 성품을 유지하며 연구를 계속하였다.</p>`,ref:'갈라디아서 6:9',verse:'"우리가 선을 행하되 낙심하지 말지니 포기하지 아니하면 때가 이르매 거두리라"'},
+  '6':{label:'하나님의 인도를 믿음',bg:'#e8f5f0',dbg:'#0f2a1f',title:'하나님의 인도를 믿음',body:`<p>"나는 기독교의 근본 교리들을 믿는 사람이다" — 이것이 리스터 본인의 신앙 고백이다.</p><p>세계 Encyclopedia는 그를 이렇게 기록한다: "그가 확고한 목적을 가질 수 있었던 것은 하나님의 인도를 받는다고 겸손히 믿었기 때문이었다."</p>`,ref:'잠언 3:5-6',verse:'"너는 마음을 다하여 여호와를 신뢰하고 네 명철을 의지하지 말라. 너는 범사에 그를 인정하라 그리하면 네 길을 지도하시리라"'},
+  '7':{label:'겸손한 성품',bg:'#fdf5e8',dbg:'#2a200a',title:'겸손한 성품',body:`<p>빌립보서 2:3은 "오직 겸손한 마음으로 각각 자기보다 남을 낫게 여기고"라고 가르친다.</p><p>1874년 파스퇴르에게 쓴 편지에서: "당신의 빛나는 연구가 내게 세균론의 진리를 증명해주었습니다." 그는 항상 다른 사람의 공로를 먼저 인정하였다.</p>`,ref:'빌립보서 2:3',verse:'"아무 일에든지 다툼이나 허영으로 하지 말고 오직 겸손한 마음으로 각각 자기보다 남을 낫게 여기고"'}
+};
+
+const bF=document.getElementById('blob-field'),fD=document.getElementById('faith-detail'),fAB=document.getElementById('faith-active-blob'),fDC=document.getElementById('faith-detail-content');
+let aBlob=null;
+document.querySelectorAll('.faith-blob').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const k=b.dataset.faith;if(aBlob===k)return;aBlob=k;const d=FD[k];if(!d)return;
+    document.querySelectorAll('.faith-blob').forEach(x=>{if(x.dataset.faith!==k){x.style.opacity='0';x.style.pointerEvents='none';x.style.transform='scale(0.6) '+(Math.random()>.5?'translateX(120px)':'translateX(-120px)');x.style.transition='all 0.4s cubic-bezier(0.4,0,1,1)'}});
+    const dark=document.documentElement.getAttribute('data-theme')==='dark';
+    fAB.textContent=d.label;fAB.style.background=dark?d.dbg:d.bg;
+    fDC.innerHTML=`<h3 class="faith-detail-title">${d.title}</h3><div class="faith-detail-body">${d.body}</div><div class="faith-scripture"><div class="ref">${d.ref}</div><p>${d.verse}</p></div><button class="faith-back-btn" onclick="resetFaith()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>모든 항목 보기</button>`;
+    setTimeout(()=>{bF.classList.add('hidden');fD.classList.add('active')},300);
+  });
+});
+function resetFaith(){aBlob=null;fD.classList.remove('active');bF.classList.remove('hidden');document.querySelectorAll('.faith-blob').forEach(b=>{b.style.opacity='';b.style.pointerEvents='';b.style.transform='';b.style.transition='all 0.5s cubic-bezier(0.16,1,0.3,1)'})}
+window.resetFaith=resetFaith;
+</script>
+</body>
+</html>
